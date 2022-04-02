@@ -1,11 +1,13 @@
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.*;
-import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
+
 
 import java.time.LocalTime;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 
 class RestaurantServiceTest {
@@ -27,11 +29,16 @@ class RestaurantServiceTest {
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
         //WRITE UNIT TEST CASE HERE
-        Restaurant restaurantToFind=restaurant;
-        String RestaurantName= restaurantToFind.getName();
+       // Restaurant restaurantToFind=restaurant;
+        String RestaurantName= restaurant.getName();
 
-        assertEquals(restaurant,service.findRestaurantByName(RestaurantName));
+        //assertEquals(restaurant,service.findRestaurantByName(RestaurantName));
        // assertTrue(new ReflectionEquals(restaurant).matches(service.findRestaurantByName(RestaurantName)));
+       // assertThat(actualObject)
+         //       .usingRecursiveComparison()
+           //     .isEqualTo(expectedObject);
+
+       assertThat(service.findRestaurantByName(RestaurantName)).usingRecursiveComparison().isEqualTo(restaurant);
 
     }
 
