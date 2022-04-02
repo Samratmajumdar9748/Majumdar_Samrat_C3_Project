@@ -18,6 +18,7 @@ class RestaurantServiceTest {
 
     @BeforeEach
     public void setup(){
+        //---Set Up Code to refactor the repeating lines of code ---//
         LocalTime openingTime = LocalTime.parse("10:30:00");
         LocalTime closingTime = LocalTime.parse("22:00:00");
         restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
@@ -29,16 +30,11 @@ class RestaurantServiceTest {
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
         //WRITE UNIT TEST CASE HERE
-       // Restaurant restaurantToFind=restaurant;
+
+
         String RestaurantName= restaurant.getName();
 
-        //assertEquals(restaurant,service.findRestaurantByName(RestaurantName));
-       // assertTrue(new ReflectionEquals(restaurant).matches(service.findRestaurantByName(RestaurantName)));
-       // assertThat(actualObject)
-         //       .usingRecursiveComparison()
-           //     .isEqualTo(expectedObject);
-
-       assertThat(service.findRestaurantByName(RestaurantName)).usingRecursiveComparison().isEqualTo(restaurant);
+       assertThat(service.findRestaurantByName(RestaurantName)).usingRecursiveComparison().isEqualTo(restaurant);  // compares the two Restaurant objects and asserts for equality.
 
     }
 
