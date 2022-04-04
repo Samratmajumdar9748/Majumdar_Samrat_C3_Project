@@ -42,4 +42,9 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    public int getCartValue(Restaurant restaurant, List<String> selectedItems) {
+
+        return restaurant.getOrderTotal(selectedItems);
+    }
 }

@@ -69,4 +69,14 @@ public class Restaurant {
         return name;
     }
 
+    // Returns the total price of the items passed as argument
+    public int getOrderTotal(List<String> items) {
+        int total=0;
+
+        for (String it: items){
+            Item item= findItemByName(it);
+            total+= item.getPrice();
+        }
+        return total;
+    }
 }
