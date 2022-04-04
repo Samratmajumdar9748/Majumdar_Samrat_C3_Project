@@ -2,6 +2,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -73,4 +75,19 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //>>>>>>>>>>>>>>>>Adding New Feature<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void calculate_order_total_should_return_the_sum_of_prices_of_the_menu_items_passed_as_argument(){
+
+        int expectedOrderValue= 119+269;    // Sweet Corn Soup costs 119 and Vegetable lasagne costs 269 as set up
+
+        List<String> items= new ArrayList<String>();
+        items.add("Sweet corn soup");
+        items.add("Vegetable lasagne");
+
+        int orderValue= restaurant.getOrderTotal(items);
+        assertEquals(expectedOrderValue,orderValue);
+
+    }
+
 }

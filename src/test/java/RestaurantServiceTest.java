@@ -3,6 +3,8 @@ import org.junit.jupiter.api.*;
 
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -78,4 +80,21 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>Adding New Feature<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    @Test
+    public void get_cart_value_should_return_the_total_order_value_of_the_items_selected_for_a_restaurant(){
+
+        List<String> selectedItems= new ArrayList<String>();
+        selectedItems.add("Sweet corn soup");
+        selectedItems.add("Vegetable lasagne");
+
+        int expectedTotal= 388; // vegetable lasagne + sweet corn soup
+
+        int cartValue= service.getCartValue(restaurant,selectedItems);
+        assertEquals(expectedTotal,cartValue);
+
+    }
+
 }
